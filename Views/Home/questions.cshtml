@@ -1,0 +1,2092 @@
+﻿
+@model Questionnaire
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> المعهد العالي للهندسة والتكنولوجيا بكفر الشيخ </title>
+  <link rel="icon" href="~/images/logoo.png">
+  <!-- fonts -->
+  <link rel="stylesheet" href="~/fonts/font.css">
+  <!-- css file  -->
+  <link rel="stylesheet" href="~/css/bootstrap5rtl.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="~/css/style-form.css">
+  <!-- Custom Css Files -->
+  <link rel="stylesheet" href="~/css/style.css">
+  <link rel="stylesheet" href="~/css/responsive.css">
+  <link rel="stylesheet" href="~/css/animation.css">
+
+</head>
+
+  <body>
+      <main class="overflow-hidden">
+         <div class="container">
+            <section class="steps">
+             <form asp-action="questions" method="Post" id="step1">
+            <!-- new code  -->
+              <div class="user-data">
+                <div class="row">
+                  <!-- 1 -->
+                  <div class="col-md-4 col-sm-12 ">
+                    <div class="text-formss">
+                      <strong> الأسم : </strong>
+                          <span>
+                                        @ViewBag.StName
+                          </span>
+                    </div>
+                  </div>
+                  <!-- 2 -->
+                  <div class="col-md-3 col-sm-12 ">
+                    <div class="text-formss">
+                     <strong> الرقم التسلسلي : </strong>
+                      <span>
+                                        @ViewBag.Qasim
+                      </span>
+                    </div>
+                  </div>
+                  <!-- 3  -->
+                  <div class="col-md-2 col-sm-12 ">
+                    <div class="text-formss">
+                      <strong> الفرقه : </strong>
+                       <span>
+                                        @ViewBag.StGrade
+                       </span>
+                    </div>
+                  </div>
+                  <!-- 4 -->
+                  <div class="col-md-3 col-sm-12 ">
+                    <div class="text-formss">
+                      <strong> التخصص : </strong>
+                       <span>
+                                        @ViewBag.stSpec
+                       </span>
+                    </div>
+                  </div>
+                </div>
+             </div>
+                <!-- end code  -->
+            <input asp-for="StId" type="hidden" id="custId" value="@ViewBag.Qasim" />
+            <!-- Question -->
+            <h1 class="question">
+                <input asp-for="QId" type="hidden" id="custId" value=@ViewBag.QId />
+                        @ViewBag.Qtext
+            </h1>
+            <!-- Options -->
+            <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                    <input asp-for="AStatus" type="radio" value=1 />
+                    <label>
+                                @ViewBag.A
+                    </label>
+                </div>
+                <div class="option animate delay-100">
+                    <input asp-for="AStatus" type="radio" value=2 />
+                    <label>
+                                @ViewBag.B
+                    </label>
+                </div>
+                <div class="option animate delay-200">
+                    <input asp-for="AStatus" type="radio" value=3 />
+                    <label>
+                                @ViewBag.C
+                    </label>
+                </div>
+                <div class="option animate delay-300">
+                    <input asp-for="AStatus" type="radio" value=4 />
+                    <label>
+                                @ViewBag.D
+                    </label>
+                </div>
+            </div>
+            <!-- Next Prev Button -->
+            <div class="nextPrev">
+                <button class="prev">
+                    <i class="fa-solid fa-caret-left"></i>
+                </button>
+
+                        @{
+                            if (@ViewBag.QId == 50)
+
+                            {
+                                            <div class="stepCount"><span>@ViewBag.QId</span>/50</div>
+                                            <button class="submit" type="Submit" id="step50btn">
+                                                  <i class="fa-solid fa-check"></i>
+                                            </button>
+                            }
+                            else
+                            {
+                                                <div class="stepCount"><span>@ViewBag.QId</span>/50</div>
+                                                <button class="next" type="Submit" id="step1btn">
+                                                    <i class="fa-solid fa-caret-right"></i>
+                                                </button>
+                            }
+                        }
+            </div>
+        </form>
+        <img class="avatar" src="~/images/QMark.png" alt="Avatar" width="200px" />
+        <div class="backgroundSlab"></div>
+        </section>
+    </div>
+  </main>
+
+  <div id="error"></div>
+  <script src="~/js/jquery-3.6.0.min.js"></script>
+  <script src="~/js/bootstrap5rtl.js"></script>
+
+  <!-- Custom js -->
+  <script src="~/js/custom.js"></script>
+
+  </body>
+
+
+
+
+
+
+
+
+
+
+
+
+          @* <!-- Step 2 -->
+          <fieldset id="step2">
+            <!-- Question -->
+            <h1 class="question">
+              هل لديك المهارة في التواصل واقناع الآخرين؟
+            </h1>
+
+            <!-- Options -->
+            <div class="options d-flex flex-wrap justify-content-between">
+              <div class="option animate">
+                <input asp-for="AStatus"  type="radio" name="op2" value="" />
+                <label>
+                  25%-0
+                </label>
+              </div>
+              <div class="option animate delay-100">
+                <input  asp-for="BStatus" type="radio" name="op2" value="" />
+                <label>
+                  50%-25
+                </label>
+              </div>
+              <div class="option animate delay-200">
+                <input asp-for="CStatus" type="radio" name="op2" value="" />
+                <label>
+                  75%-50
+                </label>
+              </div>
+              <div class="option animate delay-300">
+                <input asp-for="DStatus"  type="radio" name="op2" value=" " />
+                <label>
+                  100%-75
+                </label>
+              </div>
+            </div>
+
+            <!-- Next Prev Button -->
+            <div class="nextPrev">
+              <button class="prev" type="button">
+                <i class="fa-solid fa-caret-left"></i>
+              </button>
+
+              <!-- COunter -->
+              <div class="stepCount"><span>2</span>/ 50</div>
+              <button class="next" type="button" id="step2btn">
+                <i class="fa-solid fa-caret-right"></i>
+              </button>
+            </div>
+          </fieldset>
+
+          <!-- Step 3 -->
+          <fieldset id="step3">
+            <!-- Question -->
+            <h1 class="question">
+              كيف تفضل التواصل مع الآخرين؟
+            </h1>
+
+            <!-- Options -->
+            <div class="options d-flex flex-wrap justify-content-between">
+              <div class="option animate">
+                <input asp-for="AStatus" type="radio" name="op3" value="" />
+                <label>
+                  وجه لوجه
+                </label>
+              </div>
+              <div class="option animate delay-100">
+                <input asp-for="BStatus" type="radio" name="op3" value="" />
+                <label>
+                  مكالمات هاتفية
+                </label>
+              </div>
+              <div class="option animate delay-200">
+                <input asp-for="CStatus" type="radio" name="op3" value=" " />
+                <label>
+                  رسائل نصية
+                </label>
+              </div>
+              <div class="option animate delay-300">
+                <input asp-for="DStatus"  type="radio" name="op3" value=" " />
+                <label>
+                  من خلال وسطاء
+                </label>
+              </div>
+            </div>
+
+            <!-- Next Prev Button -->
+            <div class="nextPrev">
+              <button class="prev" type="button">
+                <i class="fa-solid fa-caret-left"></i>
+              </button>
+
+              <!-- COunter -->
+              <div class="stepCount"><span>3</span> / 50 </div>
+              <button class="next" type="button" id="step3btn">
+                <i class="fa-solid fa-caret-right"></i>
+              </button>
+            </div>
+          </fieldset>
+
+          <!-- Step 4 -->
+          <fieldset id="step4">
+            <!-- Question -->
+            <h1 class="question">
+              ما هو تقييمك لنفسك في حل المشكلات والتحليل؟
+            </h1>
+
+            <!-- Options -->
+            <div class="options d-flex flex-wrap justify-content-between">
+              <div class="option animate">
+                <input asp-for="AStatus" type="radio" name="op4" value="" />
+                <label>
+                  25%-0
+                </label>
+              </div>
+              <div class="option animate delay-100">
+                <input asp-for="BStatus" type="radio" name="op4" value="" />
+                <label>
+                  50%-25
+                </label>
+              </div>
+              <div class="option animate delay-200">
+                <input asp-for="CStatus" type="radio" name="op4" value="" />
+                <label>
+                  75%-50
+                </label>
+              </div>
+              <div class="option animate delay-300">
+                <input asp-for="DStatus"  type="radio" name="op4" value="" />
+                <label>
+                  100%-75
+                </label>
+              </div>
+            </div>
+
+            <!-- Next Prev Button -->
+            <div class="nextPrev">
+              <button class="prev" type="button">
+                <i class="fa-solid fa-caret-left"></i>
+              </button>
+
+              <!-- COunter -->
+              <div class="stepCount"><span>4</span> / 50</div>
+              <button class="apply" type="button" id="step4btn">
+                <i class="fa-solid fa-caret-right"></i>
+              </button>
+            </div>
+          </fieldset>
+
+          <!-- Step 5 -->
+          <fieldset id="step5">
+            <!-- Question -->
+            <h1 class="question">
+              ما هو تقييمك لنفسك في الحل الرياضي للمشكلات الهندسية؟
+            </h1>
+
+            <!-- Options -->
+            <div class="options d-flex flex-wrap justify-content-between">
+              <div class="option animate">
+                <input asp-for="AStatus" type="radio" name="op5" value="" />
+                <label>
+                  اجيد المفاهيم الرياضية والهندسة النظرية
+                </label>
+              </div>
+              <div class="option animate delay-100">
+                <input asp-for="BStatus" type="radio" name="op5" value="" />
+                <label>
+                  افضل الحل العملي والتطبيقي
+                </label>
+              </div>
+              <div class="option animate delay-200">
+                <input asp-for="CStatus" type="radio" name="op5" value="" />
+                <label>
+                  اجيد المفاهيم الرياضية والحل التطبيقي
+                </label>
+              </div>
+              <div class="option animate delay-300">
+                <input asp-for="DStatus"  type="radio" name="op5" value="" />
+                <label>
+                  اجيد التحليل من خلال اثبات النظريات الرياضية
+                </label>
+              </div>
+            </div>
+
+            <!-- Next Prev Button -->
+            <div class="nextPrev">
+              <button class="prev" type="button">
+                <i class="fa-solid fa-caret-left"></i>
+              </button>
+
+              <!-- COunter -->
+              <div class="stepCount"><span>5</span> / 50</div>
+              <button class="apply" type="button" id="step5btn">
+                <i class="fa-solid fa-caret-right"></i>
+              </button>
+            </div>
+          </fieldset>
+
+          <!-- Step 6 -->
+          <fieldset id="step6">
+            <!-- Question -->
+            <h1 class="question">
+              ايهما تفضل؟
+            </h1>
+
+            <!-- Options -->
+            <div class="options d-flex flex-wrap justify-content-between">
+              <div class="option animate">
+                <input asp-for="AStatus" type="radio" name="op6" value="" />
+                <label>
+                  حل المشكلة بنفسي
+                </label>
+              </div>
+              <div class="option animate delay-100">
+                <input  asp-for="BStatus" type="radio" name="op6" value="" />
+                <label>
+                  ابتكار شئ جديد
+                </label>
+              </div>
+              <div class="option animate delay-200">
+                <input asp-for="CStatus" type="radio" name="op6" value="" />
+                <label>
+                  اجيد المفاهيم الرياضية والحل التطبيقي
+                </label>
+              </div>
+              <div class="option animate delay-300">
+                <input asp-for="DStatus"  type="radio" name="op6" value="" />
+                <label>
+                  اجيد التحليل من خلال اثبات النظريات الرياضية
+                </label>
+              </div>
+            </div>
+
+            <!-- Next Prev Button -->
+            <div class="nextPrev">
+              <button class="prev" type="button">
+                <i class="fa-solid fa-caret-left"></i>
+              </button>
+
+              <!-- COunter -->
+              <div class="stepCount"><span>6</span> / 50</div>
+              <button class="apply" type="button" id="step6btn">
+                <i class="fa-solid fa-caret-right"></i>
+              </button>
+            </div>
+          </fieldset>
+
+          <!-- Step 7 -->
+          <fieldset id="step7">
+            <!-- Question -->
+            <h1 class="question">
+              عند مواجهة صعوبة في إدارة الوقت بشكل فعال وإكمال المهام في الوقت المحدد، ماذا ستفعل؟
+            </h1>
+
+            <!-- Options -->
+            <div class="options d-flex flex-wrap justify-content-between">
+              <div class="option animate">
+                <input asp-for="AStatus" type="radio" name="op7" value="" />
+                <label>
+                  انشاء جدول وتحديد الأولويات
+                </label>
+              </div>
+              <div class="option animate delay-100">
+                <input asp-for="BStatus" type="radio" name="op7" value="" />
+                <label>
+                  طلب المساعدة من ذوي الخبرات والبدا بحل المشكلات ذات الفائدة الأعلى
+                </label>
+              </div>
+              <div class="option animate delay-200">
+                <input asp-for="CStatus" type="radio" name="op7" value="" />
+                <label>
+                  التعامل بشكل عشوائي في حل المشكلات
+                </label>
+              </div>
+              <div class="option animate delay-300">
+                <input asp-for="DStatus"  type="radio" name="op7" value="" />
+                <label>
+                  البدا بحل المشكلات التي تحتاج وقت اقل
+                </label>
+              </div>
+            </div>
+
+            <!-- Next Prev Button -->
+            <div class="nextPrev">
+              <button class="prev" type="button">
+                <i class="fa-solid fa-caret-left"></i>
+              </button>
+
+              <!-- COunter -->
+              <div class="stepCount"><span>7</span> / 50</div>
+              <button class="apply" type="button" id="step7btn">
+                <i class="fa-solid fa-caret-right"></i>
+              </button>
+            </div>
+          </fieldset>
+
+          <!-- Step 8-->
+          <fieldset id="step8">
+            <!-- Question -->
+            <h1 class="question">
+              لنفترض أنك مهتم بتعلم اللغة الإسبانية وواجهتك عبارات أو كلمات جديدة ال تعرف معناها بعد بدءك بتعلمها، ماذا
+              ستفعل؟
+            </h1>
+
+            <!-- Options -->
+            <div class="options d-flex flex-wrap justify-content-between">
+              <div class="option animate">
+                <input asp-for="AStatus" type="radio" name="op8" value="" />
+                <label>
+                  اقوم بسؤال المعلم عنها في اليوم التالي
+                </label>
+              </div>
+              <div class="option animate delay-100">
+                <input asp-for="BStatus" type="radio" name="op8" value="" />
+                <label>
+                  ال انتظر حتى ارى المعلم لسؤاله و اقوم بالبحث عنها و تعلم معانيها بنفسي
+                </label>
+              </div>
+              <div class="option animate delay-200">
+                <input asp-for="CStatus" type="radio" name="op8" value="" />
+                <label>
+                  في وجهة نظري ال يشترط على غير الناطق باللغة الإلمام بجميع المفردات لذا ساقوم بتخطيها
+                </label>
+              </div>
+              <div class="option animate delay-300">
+                <input asp-for="DStatus"  type="radio" name="op8" value="" />
+                <label>
+                  احاول معرفة معناها من سياق الكلام
+                </label>
+              </div>
+            </div>
+
+            <!-- Next Prev Button -->
+            <div class="nextPrev">
+              <button class="prev" type="button">
+                <i class="fa-solid fa-caret-left"></i>
+              </button>
+
+              <!-- COunter -->
+              <div class="stepCount"><span>8</span> / 50</div>
+              <button class="apply" type="button" id="step8btn">
+                <i class="fa-solid fa-caret-right"></i>
+              </button>
+            </div>
+          </fieldset>
+
+          <!-- Step 9-->
+          <fieldset id="step9">
+            <!-- Question -->
+            <h1 class="question">
+              كم عدد ساعات المذاكرة التي تقضيها في اليوم؟
+            </h1>
+
+            <!-- Options -->
+            <div class="options d-flex flex-wrap justify-content-between">
+              <div class="option animate">
+                <input asp-for="AStatus" type="radio" name="op9" value="" />
+                <label>
+                  4-2 ساعه
+                </label>
+              </div>
+              <div class="option animate delay-100">
+                <input asp-for="BStatus" type="radio" name="op9" value="" />
+                <label>
+                  6-4 ساعات
+
+                </label>
+              </div>
+              <div class="option animate delay-200">
+                <input asp-for="CStatus" type="radio" name="op9" value="" />
+                <label>
+                  8-6 ساعات
+                </label>
+              </div>
+              <div class="option animate delay-300">
+                <input  asp-for="DStatus" type="radio" name="op9" value="" />
+                <label>
+                  10-8 ساعات
+                </label>
+              </div>
+            </div>
+
+            <!-- Next Prev Button -->
+            <div class="nextPrev">
+              <button class="prev" type="button">
+                <i class="fa-solid fa-caret-left"></i>
+              </button>
+
+              <!-- COunter -->
+              <div class="stepCount"><span>9</span> / 50</div>
+              <button class="apply" type="button" id="step9btn">
+                <i class="fa-solid fa-caret-right"></i>
+              </button>
+            </div>
+          </fieldset>
+
+          <!-- Step 10-->
+          <fieldset id="step10">
+            <!-- Question -->
+            <h1 class="question">
+              ما أهمية التدريبات الخارجية أثناء الدراسة بالنسبة لك؟
+            </h1>
+
+            <!-- Options -->
+            <div class="options d-flex flex-wrap justify-content-between">
+              <div class="option animate">
+                <input asp-for="AStatus" type="radio" name="op10" value="" />
+                <label>
+                  مهمة جدا
+                </label>
+              </div>
+              <div class="option animate delay-100">
+                <input  asp-for="BStatus" type="radio" name="op10" value="" />
+                <label>
+                  مهمة
+
+                </label>
+              </div>
+              <div class="option animate delay-200">
+                <input asp-for="CStatus" type="radio" name="op10" value="" />
+                <label>
+                  مهمة الى حد ما
+                </label>
+              </div>
+              <div class="option animate delay-300">
+                <input asp-for="DStatus"  type="radio" name="op10" value="" />
+                <label>
+                  غير مهمة ابدا"
+                </label>
+              </div>
+            </div>
+
+            <!-- Next Prev Button -->
+            <div class="nextPrev">
+              <button class="prev" type="button">
+                <i class="fa-solid fa-caret-left"></i>
+              </button>
+
+              <!-- COunter -->
+              <div class="stepCount"><span>10</span> / 50</div>
+              <button class="apply" type="button" id="step10btn">
+                <i class="fa-solid fa-caret-right"></i>
+              </button>
+            </div>
+          </fieldset>
+
+         <!-- Question 11 -->
+          <fieldset id="step11">
+              <h1 class="question">
+                هل بإمكانك إعداد خريطة عمل لحل المشكلات الهندسية؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op11" value="" />
+                  <label>نعم</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op11" value="" />
+                  <label>نعم ولكن بمساعدة شخص معي</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op11" value="" />
+                  <label>أنا أحاول أن أتدرب عليها</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op11" value="" />
+                  <label>لا أبدًا</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>11</span> / 50</div>
+                <button class="apply" type="button" id="step11btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 12 -->
+            <fieldset id="step12">
+              <h1 class="question">
+                ما هو المجال الذي ترغب في الحصول على تدريب خارجي فيه؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op12" value="" />
+                  <label>البرمجة</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op12" value="" />
+                  <label>التدريبات الميدانية بالمواقع</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op12" value="" />
+                  <label>التصميم والإنشاء</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op12" value="" />
+                  <label>الشبكات</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>12</span> / 50</div>
+                <button class="apply" type="button" id="step12btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+            <!-- Question 13 -->
+            <fieldset id="step13">
+              <h1 class="question">
+                ما هو متوسط العلامات التي تحصل عليها في ثانوية عامة في مادة
+                الرياضيات؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op13" value="" />
+                  <label>60% - 70%</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op13" value="" />
+                  <label>70% - 80%</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op13" value="" />
+                  <label>80% - 90%</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op13" value="" />
+                  <label>90% - 100%</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>13</span> / 50</div>
+                <button class="apply" type="button" id="step13btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 14 -->
+            <fieldset id="step14">
+              <h1 class="question">
+                ما هو متوسط العلامات التي تحصل عليها في ثانوية عامة في مادة
+                الكيمياء؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op14" value="" />
+                  <label>60% - 70%</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op14" value="" />
+                  <label>70% - 80%</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op14" value="" />
+                  <label>80% - 90%</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input  asp-for="DStatus" type="radio" name="op14" value="" />
+                  <label>90% - 100%</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>14</span> / 50</div>
+                <button class="apply" type="button" id="step14btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 15 -->
+            <fieldset id="step15">
+              <h1 class="question">
+                ما هو متوسط العلامات التي تحصل عليها في ثانوية عامة في مادة
+                الفيزياء؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op15" value="" />
+                  <label>60% - 70%</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op15" value="" />
+                  <label>70% - 80%</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op15" value="" />
+                  <label>80% - 90%</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op15" value="" />
+                  <label>90% - 100%</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>15</span> / 50</div>
+                <button class="apply" type="button" id="step15btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+            <!-- Question 16 -->
+            <fieldset id="step16">
+              <h1 class="question">
+                ما هو متوسط العلامات التي تحصل عليها في ثانوية عامة في مادة
+                الميكانيكا؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op16" value="" />
+                  <label>60% - 70%</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op16" value="" />
+                  <label>70% - 80%</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op16" value="" />
+                  <label>80% - 90%</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op16" value="" />
+                  <label>90% - 100%</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>16</span> / 50</div>
+                <button class="apply" type="button" id="step16btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 17 -->
+            <fieldset id="step17">
+              <h1 class="question">كيف تدير التنوع في فريق العمل؟</h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op17" value="" />
+                  <label>
+                    أنا متمرس في التعامل مع التنوع وأستفيد من مختلف
+                    الخبرات
+                  </label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op17" value="" />
+                  <label
+                    >يمكنني تحقيق التوازن بين مختلف الأفكار والأساليب في فريق
+                    العمل</label
+                  >
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op17" value="" />
+                  <label
+                    >أحاول التكيف مع التنوع، ولكن قد يكون ذلك تحديًا بعض
+                    الشيء</label
+                  >
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op17" value="" />
+                  <label>أحب العمل الفردي</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>17</span> / 50</div>
+                <button class="apply" type="button" id="step17btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+            <!-- Question 18 -->
+            <fieldset id="step18">
+              <h1 class="question">ما هو هدفك المهني في مجال الهندسة؟</h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op18" value="" />
+                  <label>الابتكار وتطوير التكنولوجيا</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op18" value="" />
+                  <label>حل المشكلات الهندسية العالقة</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op18" value="" />
+                  <label>العمل في مجالات متعددة</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op18" value="" />
+                  <label>تحسين العمليات وزيادة الكفاءة</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>18</span> / 50</div>
+                <button class="apply" type="button" id="step18btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 19 -->
+            <fieldset id="step19">
+              <h1 class="question">
+                هل تفضل العمل في القطاع الصناعي أو البحث الأكاديمي أو ريادة
+                الأعمال؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op19" value="" />
+                  <label>القطاع الصناعي</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op19" value="" />
+                  <label>العمل الأكاديمي</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op19" value="" />
+                  <label>العمل المهني الخاص</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op19" value="" />
+                  <label>لا فرق</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>19</span> / 50</div>
+                <button class="apply" type="button" id="step19btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 20 -->
+            <fieldset id="step20">
+              <h1 class="question">
+                هل لديك إمكانية التعلم الذاتي من خلال القراءة وتكنولوجيا
+                المعلومات؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op20" value="" />
+                  <label>من خلال القراءة</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op20" value="" />
+                  <label>من خلال استخدام تكنولوجيا المعلومات</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op20" value="" />
+                  <label>من خلال القراءة وتكنولوجيا المعلومات</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input  asp-for="DStatus" type="radio" name="op20" value="" />
+                  <label>من خلال التواصل مع الخبرات العليا</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>20</span> / 50</div>
+                <button class="apply" type="button" id="step20btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+            <!-- Question 21 -->
+            <fieldset id="step21">
+              <h1 class="question">
+                هل قمت بتجربة قيادة فريق أو مشروع من قبل؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op21" value="" />
+                  <label>نعم، وسأقوم بإعادة التجربة مرة أخرى</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op21" value="" />
+                  <label>نعم، ولكن لن أكرر التجربة مرة أخرى</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op21" value="" />
+                  <label>الا، ولكن سأقوم بتجربة القيادة قريباً</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op21" value="" />
+                  <label>الا، ولن أقوم بالتجربة أبدًا</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>21</span> / 50</div>
+                <button class="apply" type="button" id="step21btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 22 -->
+            <fieldset id="step22">
+              <h1 class="question">
+                ماذا تحب أن يكون دورك عند مشاركتك في عمل أو مشروع؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op22" value="" />
+                  <label>أن تكون قائد الفرق</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op22" value="" />
+                  <label
+                    >أن تكون فردًا مساهمًا في اتمام العمل المطلوب منه</label
+                  >
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op22" value="" />
+                  <label>أن تكون الشخص الذي يقلل مهامًا بين الجميع</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op22" value="" />
+                  <label>الشخص الذي يأخذ أقل عدد من المهام والأكثر أهمية</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>22</span> / 50</div>
+                <button class="apply" type="button" id="step22btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+            <!-- Question 23 -->
+            <fieldset id="step23">
+              <h1 class="question">
+                كيف ترى تعديل الأشخاص الآخرين على عملك الذي قمت به؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op23" value="" />
+                  <label>يمكن أن تساهم التعديلات في تطوير العمل للأفضل</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op23" value="" />
+                  <label>يمكن أن تعكس التعديلات التعاون والعمل الجماعي</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op23" value="" />
+                  <label
+                    >أرى أن التعديلات تؤدي إلى تحسين مهارات التحمل
+                    والتكيف</label
+                  >
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op23" value="" />
+                  <label>أرفض أي تعديلات على عملي</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>23</span> / 50</div>
+                <button class="apply" type="button" id="step23btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 24 -->
+            <fieldset id="step24">
+              <h1 class="question">
+                عدد ساعات العمل التي يمكنك تحملها مستقبلاً؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op24" value="" />
+                  <label>8 ساعات</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op24" value="" />
+                  <label>12 ساعة</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op24" value="" />
+                  <label>14 ساعة</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op24" value="" />
+                  <label>16 ساعة</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>24</span> / 50</div>
+                <button class="apply" type="button" id="step24btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 25 -->
+            <fieldset id="step25">
+              <h1 class="question">
+                هل تعني القدرة على التخيل والإبداع شيئًا مهمًا؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op25" value="" />
+                  <label>نعم، تعني الكثير</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op25" value="" />
+                  <label>لا أعتقد ذلك</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op25" value="" />
+                  <label>في بعض الأحيان تكون مفيدة</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op25" value="" />
+                  <label
+                    >نعم، ولكن ليس لدي المهارة الكافية من الإبداع والتخيل</label
+                  >
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>25</span> / 50</div>
+                <button class="apply" type="button" id="step25btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+            <!-- Question 26 -->
+            <fieldset id="step26">
+              <h1 class="question">
+                ماذا تفعل إذا أخبرك قائد فريقك أو المسؤول عن عملك أن كل ما قمت
+                به خطأ؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op26" value="" />
+                  <label>أبحث عن عمل آخر</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op26" value="" />
+                  <label>أقوم بتصحيح الأخطاء إن أمكن</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op26" value="" />
+                  <label>أتمسك برأيي ولن أكترث للنصيحة</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op26" value="" />
+                  <label>أقوم بإعادة العمل مرة أخرى</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>26</span> / 50</div>
+                <button class="apply" type="button" id="step26btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 27 -->
+            <fieldset id="step27">
+              <h1 class="question">
+                مع التطور الكبير في المجالات الهندسية، في أي مجال هندسي تفضل
+                استخدام التكنولوجيا؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op27" value="" />
+                  <label>الهندسة المدنية</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op27" value="" />
+                  <label>الهندسة المعمارية</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op27" value="" />
+                  <label>هندسة الحاسبات والتحكم</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op27" value="" />
+                  <label>هندسة الإلكترونيات والاتصالات</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>27</span> / 50</div>
+                <button class="apply" type="button" id="step27btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 28 -->
+            <fieldset id="step28">
+              <h1 class="question">
+                ماذا تفعل عندما يكون هناك آراء مختلفة في فريق العمل؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op28" value="" />
+                  <label>التمسك برأيي</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op28" value="" />
+                  <label>الاستماع ومشاركة الرأي</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op28" value="" />
+                  <label>اتخاذ قرار فردي بعد سماع جميع الآراء</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op28" value="" />
+                  <label>الاستماع للآراء من المتخصصين فقط</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>28</span> / 50</div>
+                <button class="apply" type="button" id="step28btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 29 -->
+            <fieldset id="step29">
+              <h1 class="question">
+                هل تقسم المهام المطلوبة بين جميع أعضاء فريقك أمرًا مهمًا؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op29" value="" />
+                  <label>حسب الخبرات</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op29" value="" />
+                  <label>حسب طبيعة العمل</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op29" value="" />
+                  <label>حسب المؤهلات</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op29" value="" />
+                  <label>حسب القدرات البدنية والفنية</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>29</span> / 50</div>
+                <button class="apply" type="button" id="step29btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 30 -->
+            <fieldset id="step30">
+              <h1 class="question">ما مدى احتمالية تأثير الطقس عليك سلبًا؟</h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op30" value="" />
+                  <label>غالبًا ما يؤثر علي</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op30" value="" />
+                  <label>أحيانًا يؤثر علي</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op30" value="" />
+                  <label>نادرًا ما يكون له تأثير علي</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op30" value="" />
+                  <label>الاعتقاد أنه لا يؤثر علي</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>30</span> / 50</div>
+                <button class="apply" type="button" id="step30btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+            <!-- Question 31 -->
+            <fieldset id="step31">
+              <h1 class="question">
+                هل تحب أن ترى نفسك تساهم بأفكار فريدة لتحسين أداء المشروع؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op31" value="" />
+                  <label
+                    >يمكنني أن أضمن لك أنني سأفكر بشكل إبداعي، سواء من حيث
+                    التصميم أو استخدام المساحات</label
+                  >
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op31" value="" />
+                  <label
+                    >يمكنني أن أضمن لك أفكارًا فريدة من نوعها مع مراعاة السلامة
+                    الكاملة أيضًا</label
+                  >
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op31" value="" />
+                  <label>يمكنني أن أضمن لك الحلول مع التطوير المستمر لها</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op31" value="" />
+                  <label
+                    >الفعل، فأنا أركز أكثر على تنفيذ المشروع بدقة وفقًا
+                    للتعليمات المعطاة</label
+                  >
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>31</span> / 50</div>
+                <button class="apply" type="button" id="step31btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 32 -->
+            <fieldset id="step32">
+              <h1 class="question">
+                ماذا تفعل بالأسئلة أو المشكلات التي ليس لها إجابة أو حل منطقي؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op32" value="" />
+                  <label
+                    >أعتقد أن الاختيار عشوائي بعد القضاء على الحلول الأكثر عرضة
+                    للخطر</label
+                  >
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op32" value="" />
+                  <label
+                    >أعتقد في هذه الحالة أن العاطفة ورأيي سيكون له الكلمة
+                    الأخيرة</label
+                  >
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op32" value="" />
+                  <label>استبعاد الحلول الأكثر ضررًا</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op32" value="" />
+                  <label>اختيار الحلول الأقل ضررًا</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>32</span> / 50</div>
+                <button class="apply" type="button" id="step32btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 33 -->
+            <fieldset id="step33">
+              <h1 class="question">
+                هل تحب ربط الأحداث معًا إذا كنت تشاهد برنامجك التلفزيوني المفضل
+                وتتوقع ما سيحدث؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op33" value="" />
+                  <label
+                    >أحب التنبؤ بما سيحدث وأشعر بالسعادة عندما أكون على
+                    حق</label
+                  >
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op33" value="" />
+                  <label>أحب أن أشاهد فقط وأتفاجأ بما يحدث في النهاية</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op33" value="" />
+                  <label
+                    >إن استمتاع بالأداء وطريقة تقديم المسلسل في النهاية هو
+                    أولوية بالنسبة لي</label
+                  >
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op33" value="" />
+                  <label>أحاول التعلم من خلال الشخصيات الموجودة بالمسلسل</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>33</span> / 50</div>
+                <button class="apply" type="button" id="step33btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 34 -->
+            <fieldset id="step34">
+              <h1 class="question">
+                ما هو الحل الأمثل لإدارة مشاريع متعددة في وقت واحد من وجهة نظرك؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op34" value="" />
+                  <label>ضمان توزيع العمل بالتساوي عبر الفريق</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op34" value="" />
+                  <label>يجب تفويض المهام على أساس القدرة على التنفيذ</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op34" value="" />
+                  <label>يمكن تقسيم المشاريع بين الأعضاء</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op34" value="" />
+                  <label
+                    >عمل خطة وموعد نهائي لكل مشروع ومحاولة الالتزام بذلك</label
+                  >
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>34</span> / 50</div>
+                <button class="apply" type="button" id="step34btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 35 -->
+            <fieldset id="step35">
+              <h1 class="question">
+                مشروعك كانت فيه الموارد محدودة و كان عليك اتخاذ قرارات صعبة بشأن
+                تحديد أولويات المهام. كيف ستقوم بتخصيص الموارد؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op35" value="" />
+                  <label>العمل مع العناصر المعطاة</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op35" value="" />
+                  <label>الاقتراض الكمال الموارد اللازمة</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op35" value="" />
+                  <label>تحديد أولويات العناصر الرئيسية</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op35" value="" />
+                  <label
+                    >محاولة العثور على مشروع آخر يناسب الموارد المتاحة</label
+                  >
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>35</span> / 50</div>
+                <button class="apply" type="button" id="step35btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+            <!-- Question 36 -->
+            <fieldset id="step36">
+              <h1 class="question">
+                ما هي فرصة تغيير قواعد اللعبة التي يمكن أن تخلق قيمة أكبر
+                للمؤسسة أكثر من الماضي؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op36" value="" />
+                  <label>بنية تحتية مرنة وذكية</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op36" value="" />
+                  <label>أنظمة الطاقة المتجددة</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op36" value="" />
+                  <label>البناء المستدام والنموذجي</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op36" value="" />
+                  <label>مؤهلات أعلى للموظفين</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>36</span> / 50</div>
+                <button class="apply" type="button" id="step36btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 37 -->
+            <fieldset id="step37">
+              <h1 class="question">كيف تتعامل مع رئيسك الصعب؟</h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op37" value="" />
+                  <label>فهم وجهة نظرهم</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op37" value="" />
+                  <label>فهم ما يحفزهم</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op37" value="" />
+                  <label>اجعلهم يفهمون وجهة نظرك</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op37" value="" />
+                  <label>اتجنب التعامل المباشر معه</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>37</span> / 50</div>
+                <button class="apply" type="button" id="step37btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 38 -->
+            <fieldset id="step38">
+              <h1 class="question">
+                كيف يجب أن تتعامل مع أحد أعضاء الفريق ذو أداء ضعيف؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op38" value="" />
+                  <label>فهم السبب الكامن وراء ذلك</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op38" value="" />
+                  <label>إمكانية تغيير الدور</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op38" value="" />
+                  <label>استبدال الشخص ذو أداء ضعيف</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op38" value="" />
+                  <label>تقليل الأجر الشهري له</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>38</span> / 50</div>
+                <button class="apply" type="button" id="step38btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 39 -->
+            <fieldset id="step39">
+              <h1 class="question">في رأيك دورة حياة المشروع هي</h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op39" value="" />
+                  <label>تنفيذ</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op39" value="" />
+                  <label>تخطيط</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op39" value="" />
+                  <label>إعداد</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op39" value="" />
+                  <label>المراقبة</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>39</span> / 50</div>
+                <button class="apply" type="button" id="step39btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 40 -->
+            <fieldset id="step40">
+              <h1 class="question">
+                في رأيك، ما هو الأمر الأهم بالنسبة لمدير المشروع؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op40" value="" />
+                  <label>إدارة الوقت والموارد</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op40" value="" />
+                  <label>إدارة الوقت والتكيف</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op40" value="" />
+                  <label>إدارة الوقت وحل المشكلات</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op40" value="" />
+                  <label>توظيف المهام</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>40</span> / 50</div>
+                <button class="apply" type="button" id="step40btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+            <!-- Question 41 -->
+            <fieldset id="step41">
+              <h1 class="question">
+                هل تطيق الجلوس في نفس المكان لساعات طويلة أم تحب المهام التي
+                تطلب حركة أم الزيارات الميدانية؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op41" value="" />
+                  <label>أفضل الجلوس في نفس المكان</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op41" value="" />
+                  <label>أفضل الأعمال التي تحتاج إلى حركة</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op41" value="" />
+                  <label>أفضل الزيارات الميدانية</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op41" value="" />
+                  <label>لا تفرق معي فيمكنني فعل أي منهم</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>41</span> / 50</div>
+                <button class="apply" type="button" id="step41btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 42 -->
+            <fieldset id="step42">
+              <h1 class="question">
+                هل تستطيع تحديد تصنيف المخاطر في بيئة العمل؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op42" value="" />
+                  <label>نعم</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op42" value="" />
+                  <label>أحيانا</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op42" value="" />
+                  <label>نادرا</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op42" value="" />
+                  <label>لا</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>42</span> / 50</div>
+                <button class="apply" type="button" id="step42btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 43 -->
+            <fieldset id="step43">
+              <h1 class="question">
+                هل تستطيع التوفيق ما بين العمل وضغوطه وضمان السلامة والصحة؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op43" value="" />
+                  <label>نعم</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op43" value="" />
+                  <label>أحيانا</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op43" value="" />
+                  <label>نادرا</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op43" value="" />
+                  <label>لا</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>43</span> / 50</div>
+                <button class="apply" type="button" id="step43btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 44 -->
+            <fieldset id="step44">
+              <h1 class="question">
+                هل تشعر أن لديك القدرة على تقدير التكاليف والفوائد المتعلقة
+                بالمشاريع البنائية؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op44" value="" />
+                  <label>نعم</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op44" value="" />
+                  <label>أحيانا</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op44" value="" />
+                  <label>نادرا</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op44" value="" />
+                  <label>لا</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>44</span> / 50</div>
+                <button class="apply" type="button" id="step44btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 45 -->
+            <fieldset id="step45">
+              <h1 class="question">
+                مع وجود نماذج الذكاء الاصطناعي، هل تعتقد أنها يمكن أن تستبدل
+                أصحاب المكان مثل المصممين أو الانشائيين؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op45" value="" />
+                  <label>الذكاء الاصطناعي يعزز الأداء البشري</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op45" value="" />
+                  <label>نعم، في بعض المجالات الروتينية</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op45" value="" />
+                  <label>نعم، ولكن بشكل جزئي</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op45" value="" />
+                  <label
+                    >لا، يمكن أن يعزز الذكاء الاصطناعي التخصص والابتكار</label
+                  >
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>45</span> / 50</div>
+                <button class="apply" type="button" id="step45btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+            <!-- Question 46 -->
+            <fieldset id="step46">
+              <h1 class="question">هل تحب أجراء الحسابات يدويًا؟</h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op46" value="" />
+                  <label>نعم</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op46" value="" />
+                  <label>أحيانا</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input  asp-for="CStatus" type="radio" name="op46" value="" />
+                  <label>أفضل استخدام الآلة الحاسبة</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input  asp-for="DStatus" type="radio" name="op46" value="" />
+                  <label>استخدم الآلة الحاسبة دائما</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>46</span> / 50</div>
+                <button class="apply" type="button" id="step46btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 47 -->
+            <fieldset id="step47">
+              <h1 class="question">
+                كيف يمكن استغلال الأماكن العامة في تطوير الحضارة من وجهة نظرك؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op47" value="" />
+                  <label>تطوير المكانيات التكنولوجية للأماكن</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op47" value="" />
+                  <label>تطوير البنية التحتية للأماكن</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op47" value="" />
+                  <label>تطوير الابتكار والفن</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op47" value="" />
+                  <label>تطوير التعليم العام</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>47</span> / 50</div>
+                <button class="apply" type="button" id="step47btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 48 -->
+            <fieldset id="step48">
+              <h1 class="question">
+                هل يمكنك تقسيم المشكلة إلى أجزاء أصغر للتوصل إلى حلول مبتكرة؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op48" value="" />
+                  <label>نعم</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op48" value="" />
+                  <label>أحيانا</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op48" value="" />
+                  <label>نادرا</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus"  type="radio" name="op48" value="" />
+                  <label>لا</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>48</span> / 50</div>
+                <button class="apply" type="button" id="step48btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 49 -->
+            <fieldset id="step49">
+              <h1 class="question">
+                هل تشعر بالارهاق عند الوقوف أو المشي لمسافات طويلة؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op49" value="" />
+                  <label>نعم</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op49" value="" />
+                  <label>أحيانا</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op49" value="" />
+                  <label>نادرا</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus" type="radio" name="op49" value="" />
+                  <label>لا</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>49</span> / 50</div>
+                <button class="apply" type="button" id="step49btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Question 50 -->
+            <fieldset id="step50">
+              <h1 class="question">
+                هل لديك أي اهتمامات فنية (كتابة , رسم , تصميم , تصوير) وتلجأ إلى
+                تطبيق الأفكار التي توظف فيها خيالك؟
+              </h1>
+
+              <div class="options d-flex flex-wrap justify-content-between">
+                <div class="option animate">
+                  <input asp-for="AStatus" type="radio" name="op50" value="" />
+                  <label>كتابة</label>
+                </div>
+                <div class="option animate delay-100">
+                  <input asp-for="BStatus" type="radio" name="op50" value="" />
+                  <label>رسم</label>
+                </div>
+                <div class="option animate delay-200">
+                  <input asp-for="CStatus" type="radio" name="op50" value="" />
+                  <label>تصميم</label>
+                </div>
+                <div class="option animate delay-300">
+                  <input asp-for="DStatus" type="radio" name="op50" value="" />
+                  <label>تصوير</label>
+                </div>
+              </div>
+
+              <div class="nextPrev">
+                <button class="prev" type="button">
+                  <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <div class="stepCount"><span>50</span> / 50</div>
+                <button class="submit" type="button" id="step50btn">
+                  <i class="fa-solid fa-check"></i>
+                </button>
+              </div>
+            </fieldset> 
+        </fieldset>
+ 
+        <img class="avatar" src="~/images/QMark.png" alt="Avatar" width="200px" />
+        <div class="backgroundSlab"></div>
+        </section>
+    </div>
+  </main>
+
+
+
+  <div id="error"></div>
+  <script src="~/js/jquery-3.6.0.min.js"></script>
+  <script src="~/js/bootstrap5rtl.js"></script>
+
+  <!-- Custom js -->
+  <script src="~/js/custom.js"></script>
+
+  </body>
+
+*@

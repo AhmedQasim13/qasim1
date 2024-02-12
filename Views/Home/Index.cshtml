@@ -1,0 +1,48 @@
+﻿
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model Student
+<head>
+
+</head>
+
+ <body>
+    <section class="bg-form-result pt-5 pb-5" style="background-image:url(../images/banner_bg.jpg); height:100vh;" >
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-7 col-sm-12">
+                    <div class="form-box ">
+                        <!-- title  -->
+                        <div class="image-logo text-center">
+                            <img src="~/images/logoo.png" alt="" width="130px">
+                            <h3 class="title-form"> المعهد العالي للهندسة والتكنولوجيا بكفر الشيخ </h3>
+                            <h3 class="title-form2"> تسجيل الدخول للطلاب</h3>
+                        </div>
+                        <form asp-controller="Home" asp-action="Index" method="post">
+
+                            <div class="mb-3">
+                                <label asp-for=StId for="id" class="form-label">
+                                    الرقم التسلسلي
+                                    (ID)
+                                    :
+                                </label>
+                                <input asp-for=StId type="text" class="form-control" id="id">
+                            </div>
+                            <button  type="submit" class="theme-btn style-ten"> تسجيل الدخول </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section> 
+          <!-- js file  -->
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="~/js/bootstrap5rtl.js"></script>
+
+    <!-- Custom js -->
+    <script src="~/js/custom.js"></script>
+    </body>
+    </html>
